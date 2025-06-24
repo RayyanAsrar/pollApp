@@ -1,25 +1,46 @@
-import { auth , createUserWithEmailAndPassword} from "./firebase.js";
+import {
+    auth, 
+    createUserWithEmailAndPassword,
+    db,
+    doc,
+    setDoc,
+} from "./firebase.js";
 import { signInWithGoogle } from "./login.js";
-let userEmail= document.getElementById('email')
-let userPassword= document.getElementById('password')
-let registerBtn= document.getElementById('registerBtn')
-let register=()=>{
-    
-    ///********auth mai user mil jata hai malik */
-createUserWithEmailAndPassword(auth, userEmail.value, userPassword.value)
-  .then((userCredential) => { 
-    const user = userCredential.user;
-    location="login.html"
-    console.log(user);
-    console.log(user.uid);
-    
-    
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+let userEmail = document.getElementById('email')
+let userPassword = document.getElementById('password')
+let registerBtn = document.getElementById('registerBtn')
+let firstName = document.getElementById('firstName')
+let lastName = document.getElementById('lastName')
+let signInWithGoogleBtn = document.getElementById('signInWithGoogleBtn')
 
-}
-registerBtn.addEventListener("click",register)
-signInWithGoogleBtn.addEventListener("click",signInWithGoogle)
+let saveUserToDb = async (user) => {
+    await setDoc(doc(db, "user", user.uid), {
+        name: `${firstName.value} ${lastName.value}`,
+        email: userEmail.value,
+        uid: user.uid
+    });
+};
+
+
+let register = async () => {
+    try {
+        const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            userEmail.value,
+            userPassword.value
+        );
+
+        const user = userCredential.user;
+        await saveUserToDb(user);
+
+        // Optionally delay if needed
+        // setTimeout(() => {
+            location = "login.html";
+        // }, 200);
+
+    } catch (error) {
+        console.error("Error signing up:", error.code, error.message);
+    }
+};
+registerBtn.addEventListener("click", register)
+signInWithGoogleBtn.addEventListener("click", signInWithGoogle)

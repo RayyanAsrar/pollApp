@@ -6,6 +6,11 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+import {
+    getFirestore,
+    doc,
+    setDoc,
+} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 const firebaseConfig = {
     apiKey: "AIzaSyCdX-5I2noWvSyZjGSsv1yFmYRPNW2EKRw",
     authDomain: "poll-app-7f14b.firebaseapp.com",
@@ -17,6 +22,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 export {
     auth,
@@ -25,4 +31,7 @@ export {
     GoogleAuthProvider,
     provider,
     signInWithPopup,
+    db,
+    doc,
+    setDoc,
 }
