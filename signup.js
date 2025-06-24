@@ -5,8 +5,7 @@ let userEmail= document.getElementById('email')
 let userPassword= document.getElementById('password')
 let registerBtn= document.getElementById('registerBtn')
 let register=()=>{
-    // console.log(userEmail.value);
-    // console.log(userPassword.value);
+    
     ///********auth mai user mil jata hai malik */
 createUserWithEmailAndPassword(auth, userEmail.value, userPassword.value)
   .then((userCredential) => { 
