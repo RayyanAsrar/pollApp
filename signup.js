@@ -1,6 +1,5 @@
 import { auth , createUserWithEmailAndPassword} from "./firebase.js";
-
-
+import { signInWithGoogle } from "./login.js";
 let userEmail= document.getElementById('email')
 let userPassword= document.getElementById('password')
 let registerBtn= document.getElementById('registerBtn')
@@ -23,3 +22,4 @@ createUserWithEmailAndPassword(auth, userEmail.value, userPassword.value)
 
 }
 registerBtn.addEventListener("click",register)
+signInWithGoogleBtn.addEventListener("click",signInWithGoogle)
