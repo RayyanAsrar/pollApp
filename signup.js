@@ -10,6 +10,7 @@ let register=()=>{
 createUserWithEmailAndPassword(auth, userEmail.value, userPassword.value)
   .then((userCredential) => { 
     const user = userCredential.user;
+    location="login.html"
     console.log(user);
     console.log(user.uid);
     
