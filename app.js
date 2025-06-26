@@ -101,7 +101,7 @@ let createPollFunc = async (e) => {
     return;
   }
 
-  // 🔸 Your classy class
+
   class Polls {
     constructor(createdBy, id, title, options) {
       this.User = createdBy;
@@ -119,7 +119,7 @@ let createPollFunc = async (e) => {
   let newPoll = new Polls(user.email, pollId, pollTitleValue, optionValues);
   console.log("Poll object:", newPoll);
 
-  // 🔸 Save it
+
   savePollToFirestore(newPoll);
 };
 
