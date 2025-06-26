@@ -42,5 +42,5 @@ let register = async () => {
         console.error("Error signing up:", error.code, error.message);
     }
 };
-registerBtn.addEventListener("click", register)
-signInWithGoogleBtn.addEventListener("click", signInWithGoogle)
+registerBtn && registerBtn.addEventListener("click", register)
+signInWithGoogleBtn && signInWithGoogleBtn.addEventListener("click", signInWithGoogle)
