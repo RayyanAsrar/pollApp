@@ -1,4 +1,5 @@
 import { auth, db, doc, setDoc, serverTimestamp, } from "./firebase.js";
+import { handleSignOut  } from "./helper.js";
 
 let pollTitle = document.getElementById("pollTitle");
 let optionCount = 2;
@@ -6,6 +7,10 @@ const optionsContainer = document.getElementById("optionsContainer");
 const addOptionBtn = document.getElementById("addOptionBtn");
 let createPollBtn = document.getElementById("createPollBtn");
 let optionItemsInp = document.querySelectorAll('input[name="option"]');
+const signOutBtn = document.getElementById("signOutBtn");
+
+
+signOutBtn &&  signOutBtn.addEventListener("click", handleSignOut);
 
 let addOptionFunc = () => {
   optionCount++;
@@ -34,8 +39,12 @@ addOptionBtn.addEventListener("click", addOptionFunc);
 let updateOptionNumbers = () => {
   const allInputs = optionsContainer.querySelectorAll('input[name="option"]');
   allInputs.forEach((input, index) => {
+    // console.log(index);
     input.placeholder = `Option ${index + 1}`;
+    
   });
+  console.log(allInputs);
+  
 };
 
 optionsContainer.addEventListener("click", (e) => {
@@ -51,9 +60,7 @@ optionsContainer.addEventListener("click", (e) => {
       optionDiv.remove();
       optionCount--;
     }
-  } else {
-    console.log("hello");
-  }
+  } 
   updateOptionNumbers();
 });
 // Polls ko firebase mai add krne ki koshish ki ja rhi hai malik*******************
@@ -64,7 +71,7 @@ const savePollToFirestore = async (poll) => {
     alert("Poll successfully created!");
   } catch (err) {
     console.error("Error saving poll:", err);
-    alert("Something went wrong while saving the poll.");
+    
   }
 };
 

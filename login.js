@@ -5,11 +5,16 @@ import {
   provider,
   signInWithPopup,
 } from "./firebase.js";
+import { handleSignOut  } from "./helper.js";
 
 let userEmail = document.getElementById("email");
 let userPassword = document.getElementById("password");
 let signInBtn = document.getElementById("signInBtn");
 let signInWithGoogleBtn = document.getElementById("signInWithGoogleBtn");
+const signOutBtn = document.getElementById("signOutBtn");
+
+
+signOutBtn &&  signOutBtn.addEventListener("click", handleSignOut);
 
 let login = () => {
   signInWithEmailAndPassword(auth, userEmail.value, userPassword.value)
@@ -36,6 +41,8 @@ let signInWithGoogle =()=>{
     const token = credential.accessToken;
     const user = result.user;
     location="index.html"
+    console.log(user);
+    
   }).catch((error) => {
 
      const errorCode = error.code;
