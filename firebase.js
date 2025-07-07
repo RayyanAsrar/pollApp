@@ -13,6 +13,8 @@ import {
     doc,
     setDoc,
     serverTimestamp,
+    collection,
+    onSnapshot,
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 const firebaseConfig = {
     apiKey: "AIzaSyCdX-5I2noWvSyZjGSsv1yFmYRPNW2EKRw",
@@ -40,4 +42,6 @@ export {
     serverTimestamp,
     signOut,
     onAuthStateChanged,
+    collection,
+    onSnapshot,
 }
