@@ -111,7 +111,7 @@ let createPollFunc = async (e) => {
 
   class Polls {
     constructor(createdBy, id, title, options) {
-      this.User = createdBy;
+      this.user = createdBy;
       this.id = id;
       this.title = title;
       this.options = options;

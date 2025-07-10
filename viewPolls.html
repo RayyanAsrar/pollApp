@@ -173,7 +173,7 @@
             </div>
 
             <!-- Poll Cards Container -->
-            <div class="space-y-6">
+            <div class="space-y-6" id="mainPoleContainingDiv">
                 <!-- Poll Card 1 -->
                 <div class="poll-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 animate-on-scroll">
                     <div class="mb-6">
@@ -311,11 +311,11 @@
                 </div> -->
 
                 <!-- Load More Button -->
-                <div class="text-center pt-8 animate-on-scroll" style="animation-delay: 0.4s;">
-                    <button class="px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200">
-                        Load More Polls
-                    </button>
-                </div>
+            </div>
+            <div class="text-center pt-8 animate-on-scroll" style="animation-delay: 0.4s;">
+                <button class="px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200">
+                    Load More Polls
+                </button>
             </div>
         </div>
     </section>
@@ -383,73 +383,73 @@
         // });
 
         // Vote functionality
-        const voteModal = document.getElementById('voteModal');
-        const closeModal = document.getElementById('closeModal');
-        const voteButtons = document.querySelectorAll('.vote-btn');
+        // const voteModal = document.getElementById('voteModal');
+        // const closeModal = document.getElementById('closeModal');
+        // const voteButtons = document.querySelectorAll('.vote-btn');
 
-        voteButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const pollCard = e.target.closest('.poll-card');
-                const selectedOption = pollCard.querySelector('input[type="radio"]:checked');
+        // voteButtons.forEach(button => {
+        //     button.addEventListener('click', (e) => {
+        //         const pollCard = e.target.closest('.poll-card');
+        //         const selectedOption = pollCard.querySelector('input[type="radio"]:checked');
                 
-                if (!selectedOption) {
-                    alert('Please select an option before voting!');
-                    return;
-                }
+        //         if (!selectedOption) {
+        //             alert('Please select an option before voting!');
+        //             return;
+        //         }
 
-                // Show success modal
-                voteModal.classList.remove('hidden');
+        //         // Show success modal
+        //         voteModal.classList.remove('hidden');
                 
-                // Disable the vote button and show voted state
-                button.textContent = 'Voted ✓';
-                button.disabled = true;
-                button.classList.add('opacity-75', 'cursor-not-allowed');
-                button.classList.remove('hover:scale-105');
+        //         // Disable the vote button and show voted state
+        //         button.textContent = 'Voted ✓';
+        //         button.disabled = true;
+        //         button.classList.add('opacity-75', 'cursor-not-allowed');
+        //         button.classList.remove('hover:scale-105');
                 
-                // Disable radio buttons in this poll
-                const radioButtons = pollCard.querySelectorAll('input[type="radio"]');
-                radioButtons.forEach(radio => {
-                    radio.disabled = true;
-                });
+        //         // Disable radio buttons in this poll
+        //         const radioButtons = pollCard.querySelectorAll('input[type="radio"]');
+        //         radioButtons.forEach(radio => {
+        //             radio.disabled = true;
+        //         });
                 
-                // Remove hover effects from options
-                const options = pollCard.querySelectorAll('.poll-option');
-                options.forEach(option => {
-                    option.classList.remove('cursor-pointer', 'hover:bg-blue-50', 'dark:hover:bg-blue-900/20', 'hover:border-blue-300', 'dark:hover:border-blue-500');
-                    option.classList.add('cursor-default');
-                });
-            });
-        });
+        //         // Remove hover effects from options
+        //         const options = pollCard.querySelectorAll('.poll-option');
+        //         options.forEach(option => {
+        //             option.classList.remove('cursor-pointer', 'hover:bg-blue-50', 'dark:hover:bg-blue-900/20', 'hover:border-blue-300', 'dark:hover:border-blue-500');
+        //             option.classList.add('cursor-default');
+        //         });
+        //     });
+        // });
 
-        closeModal.addEventListener('click', () => {
-            voteModal.classList.add('hidden');
-        });
+        // closeModal.addEventListener('click', () => {
+        //     voteModal.classList.add('hidden');
+        // });
 
-        // Close modal on outside click
-        voteModal.addEventListener('click', (e) => {
-            if (e.target === voteModal) {
-                voteModal.classList.add('hidden');
-            }
-        });
+        // // Close modal on outside click
+        // voteModal.addEventListener('click', (e) => {
+        //     if (e.target === voteModal) {
+        //         voteModal.classList.add('hidden');
+        //     }
+        // });
 
-        // Poll option selection effects
-        document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                const pollCard = e.target.closest('.poll-card');
-                const options = pollCard.querySelectorAll('.poll-option');
+        // // Poll option selection effects
+        // document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        //     radio.addEventListener('change', (e) => {
+        //         const pollCard = e.target.closest('.poll-card');
+        //         const options = pollCard.querySelectorAll('.poll-option');
                 
-                // Reset all options in this poll
-                options.forEach(option => {
-                    option.classList.remove('bg-blue-50', 'dark:bg-blue-900/20', 'border-blue-300', 'dark:border-blue-500');
-                    option.classList.add('border-gray-200', 'dark:border-gray-600');
-                });
+        //         // Reset all options in this poll
+        //         options.forEach(option => {
+        //             option.classList.remove('bg-blue-50', 'dark:bg-blue-900/20', 'border-blue-300', 'dark:border-blue-500');
+        //             option.classList.add('border-gray-200', 'dark:border-gray-600');
+        //         });
                 
-                // Highlight selected option
-                const selectedOption = e.target.closest('.poll-option');
-                selectedOption.classList.remove('border-gray-200', 'dark:border-gray-600');
-                selectedOption.classList.add('bg-blue-50', 'dark:bg-blue-900/20', 'border-blue-300', 'dark:border-blue-500');
-            });
-        });
+        //         // Highlight selected option
+        //         const selectedOption = e.target.closest('.poll-option');
+        //         selectedOption.classList.remove('border-gray-200', 'dark:border-gray-600');
+        //         selectedOption.classList.add('bg-blue-50', 'dark:bg-blue-900/20', 'border-blue-300', 'dark:border-blue-500');
+        //     });
+        // });
     </script>
     <script src="getData.js" type="module"></script>
     <script src="landingpg.js" type="module"></script>

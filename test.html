@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radio Button Demo</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .option { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+  <h2>Which programming language do you love the most?</h2>
+
+  <div class="option">
+    <input type="radio" name="language" value="JavaScript" id="js" />
+    <label for="js">JavaScript</label>
+  </div>
+  <div class="option">
+    <input type="radio" name="language" value="Python" id="py" />
+    <label for="py">Python</label>
+  </div>
+  <div class="option">
+    <input type="radio" name="language" value="C++" id="cpp" />
+    <label for="cpp">C++</label>
+  </div>
+
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const submitBtn = document.getElementById('submitBtn');
+
+    submitBtn.addEventListener('click', () => {
+      // Select the checked radio button
+      const selected = document.querySelector('input[name="language"]:checked');
+
+      if (!selected) {
+        console.log("🚫 No option selected!");
+        alert("Please select an option.");
+        return;
+      }
+
+      console.log("✅ Selected element:", selected); // The whole input element
+      console.log("📦 Selected value:", selected.value); // Just the value like "Python"
+
+      // Let's find its index manually
+      const allOptions = [...document.querySelectorAll('input[name="language"]')];
+      console.log(allOptions);
+      
+      const selectedIndex = allOptions.findIndex(opt => opt.checked);
+      console.log("🔢 Selected index:", selectedIndex);
+    });
+  </script>
+
+</body>
+</html>

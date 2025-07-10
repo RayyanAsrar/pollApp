@@ -29,7 +29,8 @@ togglePassword.addEventListener("click", () => {
 });
 
 // Form submission
-document.getElementById("loginForm").addEventListener("submit", (e) => {
+let loginFormTest=document.getElementById("loginForm")
+loginFormTest && loginFormTest.addEventListener("submit", (e) => {
   e.preventDefault();
   // Add your login logic here
   // alert('Login functionality would be implemented here');
