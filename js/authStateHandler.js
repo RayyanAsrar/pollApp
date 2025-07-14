@@ -15,13 +15,7 @@ onAuthStateChanged(auth, (user) => {
     navLoginBtn?.classList.remove("hidden");
     navSignupBtn?.classList.remove("hidden");
   }
- const currentPage = window.location.pathname;
-
-if (
-  !currentPage.includes("viewPolls") &&  // if NOT on viewPoll page
-  preloader
-) {
-  preloader.classList.add("hidden");
-}
-
+  if (preloader) {
+    preloader.classList.add("hidden");
+  }
 });
