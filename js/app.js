@@ -1,5 +1,5 @@
 import { auth, db, doc, setDoc, serverTimestamp, } from "./firebase.js";
-import { handleSignOut  } from "./helper.js";
+import { handleSignOut  } from "../helper.js";
 
 let pollTitle = document.getElementById("pollTitle");
 let optionCount = 2;
@@ -30,7 +30,7 @@ let addOptionFunc = () => {
   >
   ❌
   </button>
-  `;
+  `; 
   optionsContainer.appendChild(optionDiv);
 };
 

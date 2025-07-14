@@ -94,24 +94,6 @@ onSnapshot(unsub, (snapshot) => {
 
 
 })
-
-// let voteBtn = document.querySelector(".vote-btn")
-// let updateVotes = () => {
-//   let pollCard = document.querySelectorAll(".poll-card")
-//   pollCard.forEach(card => {
-//     console.log(card);
-
-//   });
-// }
-
-
-
-// document.addEventListener("click", (e) => {
-//   if (e.target.classList.contains("vote-btn")) {
-//     updateVotes()
-//   }
-// });
-
 let handleVoteClick = (e) => {
   if (!e.target.classList.contains("vote-btn")) return
   const card = e.target.closest(".poll-card");
